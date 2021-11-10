@@ -3,7 +3,7 @@ import { Form, Button, Container, Col } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Register = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
 
@@ -16,10 +16,17 @@ const Login = () => {
                 <h4 style={{ lineHeight: 1.2, marginTop: '5px', textAlign: 'left', color: '#663333' }}>Clay <br /> Kingdom</h4>
             </div>
             <div className='my-4'>
-                <h3 className='mb-4'>Login</h3>
+                <h3 className='mb-4'>Register</h3>
                 <Container className="d-flex justify-content-center " >
                     <Col md={5}>
                         <Form className="shadow p-5 mb-5 bg-body rounded" onSubmit={handleSubmit(onSubmit)}>
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+
+                                <Form.Control type="text" placeholder="Your Name"
+                                    defaultValue="test"
+                                    {...register("name")} />
+
+                            </Form.Group>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
 
                                 <Form.Control type="email" placeholder="Enter email"
@@ -34,7 +41,7 @@ const Login = () => {
                                     {...register("password", { required: true })}
                                 />
                             </Form.Group>
-                            <p>Don't have account? <Link to='/register'>Register Here</Link> </p>
+                            <p>Already Registered? <Link to='/login'>Please Login</Link> </p>
                             <Button variant="primary" type="submit">
                                 Submit
                             </Button>
@@ -46,5 +53,5 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
 

@@ -4,6 +4,7 @@ import Home from './Pages/Home/Home/Home';
 import Purchase from './Pages/Purchase/Purchase';
 import Explore from './Pages/Explore/Explore';
 import Login from './Pages/Login/Login/Login';
+import Register from './Pages/Register/Register';
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
           </Route>
           <Route path='/login'>
             <Login></Login>
+          </Route>
+          <Route path='/register'>
+            <Register></Register>
           </Route>
 
         </Switch>
