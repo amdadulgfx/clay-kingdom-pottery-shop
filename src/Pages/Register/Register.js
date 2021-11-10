@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Form, Button, Container, Col } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 const Register = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const { registerUser } = useAuth();
+    const history = useHistory();
 
-    console.log(watch("example")); // watch input value by passing the name of it
+    const onSubmit = data => {
+        registerUser(data.email, data.password, data.displayName);
+        history.replace('/');
+    };
+
+
 
     return (
         <div>
@@ -24,7 +31,7 @@ const Register = () => {
 
                                 <Form.Control type="text" placeholder="Your Name"
                                     defaultValue="test"
-                                    {...register("name")} />
+                                    {...register("displayName")} />
 
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formBasicEmail">

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import './Product.css';
 
 const Product = (props) => {
-    const { name, price, rating, img, description } = props.product;
+    const { name, price, rating, img, description, _id } = props.product;
 
     return (
         <Col>
@@ -28,7 +28,7 @@ const Product = (props) => {
                         <p style={{ height: "70px" }}>
                             {description.slice(0, 100)}...
                         </p>
-                        <Link to='/purchase'>
+                        <Link to={`/purchase/${_id}`}>
                             <Button className='clay-button'>Purchase Now</Button>
                         </Link>
                     </Card.Text>

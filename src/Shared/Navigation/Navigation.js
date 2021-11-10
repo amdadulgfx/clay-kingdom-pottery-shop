@@ -1,8 +1,12 @@
 import React from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Container, Nav, Navbar, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 const Navigation = () => {
+    const { user, logOut } = useAuth();
+    // console.log(user);
+
     const linkColor = { color: '#663333', textDecoration: 'none' };
     return (
         <Navbar collapseOnSelect style={{ backgroundColor: '#FFF1EE', color: '#663333' }} expand="lg" >
@@ -16,14 +20,27 @@ const Navigation = () => {
                     <Nav className="me-auto">
 
                         <Link style={linkColor} className='px-2 link-hover' to='/home'>Home</Link>
+                        <Link style={linkColor} className='px-2 link-hover' to='/explore'>Explore</Link>
+                        {
+                            user.email && <div>
+                                <Link style={linkColor} className='px-2 link-hover' to='/dashboard'>Dashboard</Link>
+                                <Link style={linkColor} className='px-2 link-hover' to='/myOrders'>My Orders</Link>
+                                <Link style={linkColor} className='px-2 link-hover' to='/pay'>Pay</Link>
+                                <Link style={linkColor} className='px-2 link-hover' to='/Review'>Review</Link>
+                            </div>
+                        }
                     </Nav>
                     <Nav >
-                        <Link style={linkColor} className='px-2 link-hover' to='/explore'>Explore</Link>
-                        <Link style={linkColor} className='px-2 link-hover' to='/login'>Login</Link>
+                        {
+                            user.email ? <div> {user.displayName}
+                                <Button style={{ ...linkColor, backgroundColor: '#FFF1EE', border: 'none' }} onClick={logOut} className='px-2 link-hover'>Logout</Button></div> : <div>
+                                <Link style={linkColor} className='px-2 link-hover' to='/login'>Login</Link>
+                            </div>
+                        }
                     </Nav>
                 </Navbar.Collapse>
             </Container>
-        </Navbar>
+        </Navbar >
     );
 };
 
