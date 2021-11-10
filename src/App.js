@@ -8,13 +8,13 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route exact to='/'>
+          <Route exact path='/'>
             <Home></Home>
           </Route>
-          <Route to='/home'>
+          <Route path='/home'>
             <Home></Home>
           </Route>
-          <Route to='/purchase'>
+          <Route path='/purchase'>
             <Purchase></Purchase>
           </Route>
 
