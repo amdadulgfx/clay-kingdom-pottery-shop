@@ -1,32 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Container, Row } from 'react-bootstrap';
+import Review from '../Review/Review';
 
 const Reviews = () => {
-    const reviews = [
-        {
-            name: 'John Hendry',
-            img: 'https://randomuser.me/api/portraits/med/men/97.jpg',
-            comment: 'I h',
-            designation: 'Entrepreneur',
-            rating: 4,
-        },
-        {
-            name: 'John Hendry',
-            img: 'https://randomuser.me/api/portraits/med/men/97.jpg',
-            comment: 'I h',
-            designation: 'Entrepreneur',
-            rating: 4,
-        },
-        {
-            name: 'John Hendry',
-            img: 'https://randomuser.me/api/portraits/med/men/97.jpg',
-            comment: 'I h',
-            designation: 'Entrepreneur',
-            rating: 4,
-        },
-    ]
+    const [reviews, setReviews] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:5000/reviews')
+            .then(res => res.json())
+            .then(data => setReviews(data))
+    }, [])
     return (
-        <div>
-            this is reviews
+        <div className='py-5' style={{ backgroundColor: '#FCF8F7' }}>
+            <h1 className='pb-3'>Testimonials</h1>
+            <Container  >
+                <Row xs={1} md={4} className="g-4">
+                    {
+                        reviews.map(review => <Review key={review._id}
+                            review={review}
+                        ></Review>)
+                    }
+                </Row>
+            </Container>
         </div>
     );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Col, Button } from 'react-bootstrap';
 import Rating from 'react-rating';
+import { Link } from 'react-router-dom';
 import './Product.css';
 
 const Product = (props) => {
@@ -27,7 +28,9 @@ const Product = (props) => {
                         <p style={{ height: "70px" }}>
                             {description.slice(0, 100)}...
                         </p>
-                        <Button className='clay-button'>Purchase Now</Button>
+                        <Link to='/purchase'>
+                            <Button className='clay-button'>Purchase Now</Button>
+                        </Link>
                     </Card.Text>
                 </Card.Body>
             </Card>

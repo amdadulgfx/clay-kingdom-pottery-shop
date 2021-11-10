@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './Pages/Home/Home/Home';
+import Purchase from './Pages/Purchase/Purchase';
 
 function App() {
   return (
@@ -13,6 +14,10 @@ function App() {
           <Route to='/home'>
             <Home></Home>
           </Route>
+          <Route to='/purchase'>
+            <Purchase></Purchase>
+          </Route>
+
         </Switch>
       </Router>
     </div>
