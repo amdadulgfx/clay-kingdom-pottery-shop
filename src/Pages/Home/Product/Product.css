@@ -8,3 +8,8 @@
     background-color: #663333;
 
 }
+.link-hover:hover{
+    /* background-color: rgb(251, 239, 224); */
+    color: #af4747 !important;
+    border-radius: 5px;
+}
