@@ -1,71 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Container, Row } from 'react-bootstrap';
+import Product from '../Product/Product';
 
 const Products = () => {
-    const products = [
-        {
-            name: 'Modern Vase',
-            description: 'Terracotta vase with black glaze finish works all the angles, from its simple base to round curves and angled lip. Natural terracotta shade is visible on the interior, adding to the organic feel. Gorgeous on its own as a statement piece or displaying dried blooms.',
-            price: 32.99,
-            stock: 15,
-            rating: 4.5,
-            img: 'https://i.ibb.co/WKhP2fp/clay.jpg',
-            color: 'black',
-            type: 'Interior Decor'
-        },
-        {
-            name: 'Modern Vase',
-            description: 'Terracotta vase with black glaze finish works all the angles, from its simple base to round curves and angled lip. Natural terracotta shade is visible on the interior, adding to the organic feel. Gorgeous on its own as a statement piece or displaying dried blooms.',
-            price: 32.99,
-            stock: 15,
-            rating: 4.5,
-            img: 'https://i.ibb.co/WKhP2fp/clay.jpg',
-            color: 'black',
-            type: 'Interior Decor'
-        },
-        {
-            name: 'Modern Vase',
-            description: 'Terracotta vase with black glaze finish works all the angles, from its simple base to round curves and angled lip. Natural terracotta shade is visible on the interior, adding to the organic feel. Gorgeous on its own as a statement piece or displaying dried blooms.',
-            price: 32.99,
-            stock: 15,
-            rating: 4.5,
-            img: 'https://i.ibb.co/WKhP2fp/clay.jpg',
-            color: 'black',
-            type: 'Interior Decor'
-        },
-        {
-            name: 'Modern Vase',
-            description: 'Terracotta vase with black glaze finish works all the angles, from its simple base to round curves and angled lip. Natural terracotta shade is visible on the interior, adding to the organic feel. Gorgeous on its own as a statement piece or displaying dried blooms.',
-            price: 32.99,
-            stock: 15,
-            rating: 4.5,
-            img: 'https://i.ibb.co/WKhP2fp/clay.jpg',
-            color: 'black',
-            type: 'Interior Decor'
-        },
-        {
-            name: 'Modern Vase',
-            description: 'Terracotta vase with black glaze finish works all the angles, from its simple base to round curves and angled lip. Natural terracotta shade is visible on the interior, adding to the organic feel. Gorgeous on its own as a statement piece or displaying dried blooms.',
-            price: 32.99,
-            stock: 15,
-            rating: 4.5,
-            img: 'https://i.ibb.co/WKhP2fp/clay.jpg',
-            color: 'black',
-            type: 'Interior Decor'
-        },
-        {
-            name: 'Modern Vase',
-            description: 'Terracotta vase with black glaze finish works all the angles, from its simple base to round curves and angled lip. Natural terracotta shade is visible on the interior, adding to the organic feel. Gorgeous on its own as a statement piece or displaying dried blooms.',
-            price: 32.99,
-            stock: 15,
-            rating: 4.5,
-            img: 'https://i.ibb.co/WKhP2fp/clay.jpg',
-            color: 'black',
-            type: 'Interior Decor'
-        },
-    ]
+    const [products, setProducts] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:5000/topProducts/')
+            .then(res => res.json())
+            .then(data => setProducts(data))
+    }, [])
     return (
-        <div>
-            this is products
+        <div className="py-5" style={{ backgroundColor: '#FCF8F7', paddingTop: '30px' }}>
+            <h1 className='my-5'>Our Featured Products</h1>
+            <Container>
+                <Row xs={1} md={3} className="g-4">
+                    {
+                        products.map(pd => <Product key={pd._id}
+                            product={pd}
+                        ></Product>)
+                    }
+                </Row>
+            </Container>
         </div>
     );
 };
