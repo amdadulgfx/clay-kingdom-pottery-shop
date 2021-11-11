@@ -25,8 +25,8 @@ const Product = (props) => {
                                 fullSymbol="fas fa-star rating-color "
                             />
                         </p>
-                        <p style={{ height: "70px" }}>
-                            {description.slice(0, 100)}...
+                        <p style={{ height: "60px" }}>
+                            {description.slice(0, 90)}...
                         </p>
                         <Link to={`/purchase/${_id}`}>
                             <Button className='clay-button'>Purchase Now</Button>

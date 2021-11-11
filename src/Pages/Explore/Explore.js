@@ -18,7 +18,7 @@ const Explore = () => {
                 <div clas>
                     <h1 className='my-5'>Explore All the Products</h1>
                     <Container className='pb-5'>
-                        <Row xs={1} md={3} className="g-4">
+                        <Row xs={1} md={4} className="g-4">
                             {
                                 products.map(pd => <Product key={pd._id}
                                     product={pd}
