@@ -6,9 +6,9 @@ import AddReview from '../AddReview/AddReview';
 import MyOrders from '../MyOrders/MyOrders';
 import Pay from '../Pay/Pay';
 import { faEdit, faSortAmountDownAlt } from '@fortawesome/free-solid-svg-icons';
-import { getAuth } from '@firebase/auth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaypal } from '@fortawesome/free-brands-svg-icons';
+import useAuth from '../../../hooks/useAuth';
 const sideBar = {
     backgroundColor: "#fcd2c9",
     height: '100vh',
@@ -16,8 +16,7 @@ const sideBar = {
 }
 const Dashboard = () => {
     let { path, url } = useRouteMatch();
-    const { user, logOut } = getAuth();
-    console.log(user);
+    const { user, logOut } = useAuth();
     return (
         <div style={{ width: '100%', backgroundColor: '#f4b0a4', overflow: 'hidden' }}>
             <Navigation></Navigation>
@@ -29,15 +28,15 @@ const Dashboard = () => {
                             <li><FontAwesomeIcon icon={faSortAmountDownAlt} /><Link style={linkColor} className='mx-3 link-hover' to={`${url}/myOrder`}>My Orders</Link></li>
                             <li><FontAwesomeIcon icon={faPaypal} /><Link style={linkColor} className='mx-3 link-hover' to={`${url}/pay`}> Pay</Link></li>
                             <li><FontAwesomeIcon icon={faEdit} /><Link style={linkColor} className='mx-3 link-hover' to={`${url}/addReview`}>Add Review</Link></li>
+                            {
+                                user?.email ? <div > {user.displayName} <br />
+                                    <Button style={{ ...linkColor, backgroundColor: '#FFF1EE', border: 'none' }} onClick={logOut} className='px-2 link-hover'>Logout</Button></div> : ''
+
+                            }
                         </ul>
 
 
 
-                        {
-                            user?.email ? <div className='d-flex align-items-center'> {user.displayName}
-                                <Button style={{ ...linkColor, backgroundColor: '#FFF1EE', border: 'none' }} onClick={logOut} className='px-2 link-hover'>Logout</Button></div> : ''
-
-                        }
                     </div>
 
                 </Col>

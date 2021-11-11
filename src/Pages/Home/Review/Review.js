@@ -17,8 +17,8 @@ const Review = (props) => {
                         <Rating
                             initialRating={rating}
                             readonly
-                            emptySymbol="far fa-star rating-color "
-                            fullSymbol="fas fa-star rating-color "
+                            emptySymbol="far fa-star rating-color"
+                            fullSymbol="fas fa-star rating-color"
                         />
                     </div>
                 </Card.Header>

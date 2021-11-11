@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Form, Row, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
@@ -9,7 +10,7 @@ import Navigation from '../../Shared/Navigation/Navigation';
 
 const Purchase = () => {
     const [product, setProduct] = useState({});
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
 
     const { id } = useParams();
     const { user } = useAuth();
@@ -25,7 +26,17 @@ const Purchase = () => {
 
     const onSubmit = data => {
         data.productName = name;
-        console.log(data);
+        data.status = 'pending';
+        axios.post('http://localhost:5000/orders', {
+            ...data
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        reset();
     };
     return (
         <div >

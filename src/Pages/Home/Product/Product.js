@@ -16,18 +16,20 @@ const Product = (props) => {
 
                         <Card.Title>{name}</Card.Title> <p> <i>${price}</i> </p>
                     </div>
-                    <Card.Text >
-                        <p style={{ textAlign: 'left' }}>
+                    <Card.Text style={{ textAlign: 'left' }} >
+                        <span >
                             <Rating
                                 initialRating={rating}
                                 readonly
                                 emptySymbol="far fa-star rating-color "
                                 fullSymbol="fas fa-star rating-color "
                             />
-                        </p>
-                        <p style={{ height: "60px" }}>
+                        </span>
+                        <br />
+                        <span style={{ height: "60px" }}>
                             {description.slice(0, 90)}...
-                        </p>
+                        </span>
+                        <br />
                         <Link to={`/purchase/${_id}`}>
                             <Button className='clay-button'>Purchase Now</Button>
                         </Link>
