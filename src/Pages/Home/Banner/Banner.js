@@ -12,7 +12,7 @@ const Banner = () => {
                     <div>
 
                         <h3 style={{ fontSize: '50px', marginTop: '80px' }}>
-                            Pottery Made With {" "}
+                            Pottery Made With {" "} <br />
                             <Typical
                                 steps={['Trust!', 2000,
                                     'Love!', 2000,

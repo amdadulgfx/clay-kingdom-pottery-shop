@@ -5,6 +5,7 @@ import useAuth from '../../../hooks/useAuth';
 const MyOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
     const { user } = useAuth();
+    // const [remainingUsers, setRemainingUsers] = useState([])
     useEffect(() => {
         fetch(`http://localhost:5000/orders?email=${user.email}`)
             .then(res => res.json())
@@ -12,12 +13,31 @@ const MyOrders = () => {
     }, [user])
 
     const handleDelete = id => {
+        // console.log(id);
+        const proceed = window.confirm('Do you really want to delete this order?')
+        if (proceed) {
 
+
+            fetch(`http://localhost:5000/allOrders/${id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    // Do some stuff...
+                    if (data.deletedCount > 0) {
+                        alert('Deleted Successfully!');
+                        const remainingUsers = myOrders.filter(pd => pd._id !== id);
+                        setMyOrders(remainingUsers);
+                    }
+                })
+                .catch(err => console.log(err));
+        }
     }
     return (
         <div>
             <Container className='py-5' data-aos="zoom-in">
-                <h3 className='text-center py-5'>My Orders</h3>
+                <h3 className='text-center pb-5'>My Orders</h3>
                 <Table bordered>
                     <thead>
                         <tr>
@@ -39,7 +59,7 @@ const MyOrders = () => {
 
                                         <Button size='sm'
                                             onClick={() => handleDelete(myOrder._id)}
-                                            variant='outline-danger'>Cancel</Button>
+                                            variant='outline-danger'>Delete</Button>
                                     </td>
                                 </tr>
                             )

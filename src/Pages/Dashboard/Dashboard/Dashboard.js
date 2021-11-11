@@ -5,13 +5,13 @@ import Navigation, { linkColor } from '../../../Shared/Navigation/Navigation';
 import AddReview from '../AddReview/AddReview';
 import MyOrders from '../MyOrders/MyOrders';
 import Pay from '../Pay/Pay';
-import { faEdit, faSortAmountDownAlt } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faHome, faSignOutAlt, faSortAmountDownAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaypal } from '@fortawesome/free-brands-svg-icons';
 import useAuth from '../../../hooks/useAuth';
 const sideBar = {
     backgroundColor: "#fcd2c9",
-    height: '100vh',
+    color: '#663333',
     textAlign: 'left'
 }
 const Dashboard = () => {
@@ -19,22 +19,49 @@ const Dashboard = () => {
     const { user, logOut } = useAuth();
     return (
         <div style={{ width: '100%', backgroundColor: '#f4b0a4', overflow: 'hidden' }}>
-            <Navigation></Navigation>
+
             <Row md={2}>
                 <Col md={3}>
-                    <div style={sideBar}>
-                        <ul style={{ listStyle: 'none' }}>
+                    <div style={sideBar} className='d-flex flex-column justify-content-between  h-100 pt-3 pb-5'>
+                        <div >
+                            <p className='text-center'><b>{user.displayName} <br /> {user.email}</b></p>
 
-                            <li><FontAwesomeIcon icon={faSortAmountDownAlt} /><Link style={linkColor} className='mx-3 link-hover' to={`${url}/myOrder`}>My Orders</Link></li>
-                            <li><FontAwesomeIcon icon={faPaypal} /><Link style={linkColor} className='mx-3 link-hover' to={`${url}/pay`}> Pay</Link></li>
-                            <li><FontAwesomeIcon icon={faEdit} /><Link style={linkColor} className='mx-3 link-hover' to={`${url}/addReview`}>Add Review</Link></li>
+
+                            <ul style={{ listStyle: 'none' }}>
+                                <li>
+                                    <FontAwesomeIcon icon={faHome} /><Link style={linkColor} className='mx-3 link-hover' to="/home">Home</Link>
+                                </li>
+                                <li>
+                                    <FontAwesomeIcon icon={faSortAmountDownAlt} /><Link style={linkColor} className='mx-3 link-hover' to={`${url}/myOrder`}>My Orders</Link>
+                                </li>
+                                <li>
+                                    <FontAwesomeIcon icon={faPaypal} />
+                                    <Link style={linkColor} className='mx-3 link-hover' to={`${url}/pay`}> Pay</Link>
+                                </li>
+                                <li>
+                                    <FontAwesomeIcon icon={faEdit} />
+                                    <Link style={linkColor} className='mx-3 link-hover' to={`${url}/addReview`}>Add Review</Link>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
                             {
-                                user?.email ? <div > {user.displayName} <br />
-                                    <Button style={{ ...linkColor, backgroundColor: '#FFF1EE', border: 'none' }} onClick={logOut} className='px-2 link-hover'>Logout</Button></div> : ''
+
+
+                                user?.email ? <ul style={{ listStyle: 'none' }}>
+                                    <div >
+                                        <li>
+
+                                            <FontAwesomeIcon icon={faSignOutAlt} />
+                                            <Button style={{ ...linkColor, backgroundColor: 'transparent', border: 'none' }} onClick={logOut} className='mx-2 link-hover mb-2'>Logout</Button>
+                                        </li>
+                                    </div>
+                                </ul> : ''
+
 
                             }
-                        </ul>
 
+                        </div>
 
 
                     </div>
@@ -43,7 +70,7 @@ const Dashboard = () => {
                 <Col md={9}>
                     <Switch>
                         <Route exact path={path}>
-                            <h3>Please select a topic.</h3>
+                            <MyOrders></MyOrders>
                         </Route>
                         <Route path={`${path}/myOrder`}>
                             <MyOrders></MyOrders>
