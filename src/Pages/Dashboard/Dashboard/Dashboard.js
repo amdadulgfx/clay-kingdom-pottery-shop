@@ -113,7 +113,10 @@ const Dashboard = () => {
                 <Col md={9}>
                     <Switch>
                         <Route exact path={path}>
-                            <MyOrders></MyOrders>
+                            {
+                                admin ? <ManageAllOrders></ManageAllOrders> :
+                                    <MyOrders></MyOrders>
+                            }
                         </Route>
                         <Route path={`${path}/myOrder`}>
                             <MyOrders></MyOrders>
