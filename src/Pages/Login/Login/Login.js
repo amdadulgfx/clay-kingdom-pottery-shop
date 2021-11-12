@@ -28,7 +28,7 @@ const Login = () => {
                             <Form.Group className="mb-3" controlId="formBasicEmail">
 
                                 <Form.Control type="email" placeholder="Enter email"
-                                    defaultValue="test"
+
                                     {...register("email")} />
 
                             </Form.Group>
@@ -41,7 +41,7 @@ const Login = () => {
                             </Form.Group>
                             <p>Don't have account? <Link to='/register'>Register Here</Link> </p>
                             <Button variant="primary" type="submit">
-                                Submit
+                                Log In
                             </Button>
                         </Form>
                     </Col>

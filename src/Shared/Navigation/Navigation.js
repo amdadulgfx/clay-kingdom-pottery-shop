@@ -5,7 +5,7 @@ import { Container, Nav, Navbar, Button } from 'react-bootstrap';
 import { NavLink as Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
-const active = {
+export const active = {
     color: '#af4747',
     borderBottom: '1px solid #af4747',
     fontWeight: '500'

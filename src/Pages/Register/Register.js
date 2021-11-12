@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Form, Button, Container, Col } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import { Link, useHistory } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 const Register = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const { registerUser } = useAuth();
     const history = useHistory();
 
@@ -30,14 +30,14 @@ const Register = () => {
                             <Form.Group className="mb-3" controlId="formBasicEmail">
 
                                 <Form.Control type="text" placeholder="Your Name"
-                                    defaultValue="test"
+
                                     {...register("displayName")} />
 
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
 
                                 <Form.Control type="email" placeholder="Enter email"
-                                    defaultValue="test"
+
                                     {...register("email")} />
 
                             </Form.Group>
@@ -50,7 +50,7 @@ const Register = () => {
                             </Form.Group>
                             <p>Already Registered? <Link to='/login'>Please Login</Link> </p>
                             <Button variant="primary" type="submit">
-                                Submit
+                                Register
                             </Button>
                         </Form>
                     </Col>
