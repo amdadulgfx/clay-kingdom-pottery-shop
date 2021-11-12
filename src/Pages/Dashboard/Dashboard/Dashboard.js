@@ -5,11 +5,15 @@ import { active, linkColor } from '../../../Shared/Navigation/Navigation';
 import AddReview from '../AddReview/AddReview';
 import MyOrders from '../MyOrders/MyOrders';
 import Pay from '../Pay/Pay';
-import { faEdit, faHome, faSignOutAlt, faSortAmountDownAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faHome, faPlusSquare, faSignOutAlt, faSortAmountDownAlt, faTasks, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useAuth from '../../../hooks/useAuth';
 import { faMoneyBillAlt } from '@fortawesome/free-regular-svg-icons';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
+import AdminRoute from '../../Login/AdminRoute/AdminRoute';
+import ManageAllOrders from '../ManageAllOrders/ManageAllOrders';
+import ManageProducts from '../ManageProducts/ManageProducts';
+import AddAProduct from '../AddAProduct/AddAProduct';
 const sideBar = {
     backgroundColor: "#fcd2c9",
     color: '#663333',
@@ -17,7 +21,7 @@ const sideBar = {
 }
 const Dashboard = () => {
     let { path, url } = useRouteMatch();
-    const { user, logOut } = useAuth();
+    const { user, logOut, admin } = useAuth();
     return (
         <div style={{ width: '100%', backgroundColor: '#f4b0a4', overflow: 'hidden' }}>
             <div style={{ backgroundColor: '#FFF1EE', marginBottom: '0px' }}>
@@ -42,24 +46,47 @@ const Dashboard = () => {
 
 
                             <ul style={{ listStyle: 'none' }}>
+
                                 <li>
                                     <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to="/home"><FontAwesomeIcon icon={faHome} /> Home</Link>
                                 </li>
-                                <li>
-                                    <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/myOrder`}><FontAwesomeIcon icon={faSortAmountDownAlt} /> My Orders</Link>
-                                </li>
-                                <li>
+                                {
+                                    !admin && <div>
+                                        <li>
+                                            <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/myOrder`}><FontAwesomeIcon icon={faSortAmountDownAlt} /> My Orders</Link>
+                                        </li>
+                                        <li>
 
-                                    <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/pay`}><FontAwesomeIcon icon={faMoneyBillAlt} />{" "} Pay</Link>
-                                </li>
-                                <li>
+                                            <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/pay`}><FontAwesomeIcon icon={faMoneyBillAlt} />{" "} Pay</Link>
+                                        </li>
+                                        <li>
 
-                                    <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/addReview`}><FontAwesomeIcon icon={faEdit} /> Add Review</Link>
-                                </li>
-                                <li>
+                                            <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/addReview`}><FontAwesomeIcon icon={faEdit} /> Add Review</Link>
+                                        </li>
+                                    </div>
+                                }
 
-                                    <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/makeAdmin`}><FontAwesomeIcon icon={faUserPlus} /> Make Admin</Link>
-                                </li>
+                                {
+                                    admin && <div>
+                                        <li>
+
+                                            <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/makeAdmin`}><FontAwesomeIcon icon={faUserPlus} /> Make Admin</Link>
+                                        </li>
+                                        <li>
+
+                                            <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/addAProduct`}><FontAwesomeIcon icon={faPlusSquare} /> Add A Product</Link>
+                                        </li>
+
+                                        <li>
+
+                                            <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/manageAllOrders`}><FontAwesomeIcon icon={faTasks} /> Manage All Orders</Link>
+                                        </li>
+                                        <li>
+
+                                            <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/manageProducts`}><FontAwesomeIcon icon={faTasks} /> Manage Products</Link>
+                                        </li>
+                                    </div>
+                                }
                             </ul>
                         </div>
                         <div>
@@ -97,9 +124,18 @@ const Dashboard = () => {
                         <Route path={`${path}/addReview`}>
                             <AddReview></AddReview>
                         </Route>
-                        <Route path={`${path}/makeAdmin`}>
+                        <AdminRoute path={`${path}/makeAdmin`}>
                             <MakeAdmin></MakeAdmin>
-                        </Route>
+                        </AdminRoute>
+                        <AdminRoute path={`${path}/manageAllOrders`}>
+                            <ManageAllOrders></ManageAllOrders>
+                        </AdminRoute>
+                        <AdminRoute path={`${path}/manageProducts`}>
+                            <ManageProducts></ManageProducts>
+                        </AdminRoute>
+                        <AdminRoute path={`${path}/addAProduct`}>
+                            <AddAProduct></AddAProduct>
+                        </AdminRoute>
                     </Switch>
                 </Col>
             </Row>

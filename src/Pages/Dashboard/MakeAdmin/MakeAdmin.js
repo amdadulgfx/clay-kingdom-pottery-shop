@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert, Container } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 const MakeAdmin = () => {
     const [success, setSuccess] = useState(false);
@@ -24,23 +24,26 @@ const MakeAdmin = () => {
     return (
         <div>
             <h2>Make An Admin</h2>
-            <Form className="shadow p-5  bg-body rounded " onSubmit={handleSubmit(onSubmit)}>
+            <Container>
+                <Form className="shadow p-5  bg-body rounded " onSubmit={handleSubmit(onSubmit)}>
 
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
 
-                    <Form.Control type="email" placeholder="Enter email address"
-                        {...register("email", { required: true })}
-                    />
-                </Form.Group>
+                        <Form.Control type="email" placeholder="Enter email address"
+                            {...register("email", { required: true })}
+                        />
+                    </Form.Group>
 
-                <Button variant="primary" type="submit">
-                    Make Admin
-                </Button>
-            </Form>
-            {success && <Alert variant="success">
-                Made Admin Succesfully!
-            </Alert>}
+                    <Button variant="primary" type="submit">
+                        Make Admin
+                    </Button>
+                </Form>
+
+                {success && <Alert variant="success">
+                    Made Admin Succesfully!
+                </Alert>}
+            </Container>
         </div>
     );
 };

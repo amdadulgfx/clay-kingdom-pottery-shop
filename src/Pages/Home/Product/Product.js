@@ -26,9 +26,9 @@ const Product = (props) => {
                             />
                         </span>
                         <br />
-                        <span style={{ height: "60px" }}>
-                            {description.slice(0, 90)}...
-                        </span>
+                        <p style={{ height: "60px" }}>
+                            {description.slice(0, 120)}...
+                        </p>
                         <br />
                         <Link to={`/purchase/${_id}`}>
                             <Button className='clay-button'>Purchase Now</Button>

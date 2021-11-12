@@ -52,7 +52,7 @@ const AddReview = () => {
 
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicName">
-                        <Form.Control type="number" placeholder="Rate a Number 1 to 5"
+                        <Form.Control type="number" placeholder="Rate a Number 0 to 5"
 
                             {...register("rating", { required: true })} />
 
