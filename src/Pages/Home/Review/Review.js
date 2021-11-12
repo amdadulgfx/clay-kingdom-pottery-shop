@@ -3,14 +3,14 @@ import { Card, Col } from 'react-bootstrap';
 import Rating from 'react-rating';
 
 const Review = (props) => {
-    const { name, img, comment, rating } = props.review
+    const { name, img, comment, rating, pdName } = props.review
     return (
         <Col>
             <Card border="light" >
                 <Card.Header className='d-flex align-items-center'>
                     <div>
 
-                        <img style={{}} src={img} alt="" />
+                        <img style={{ height: '72', width: '72', borderRadius: '5px' }} src={img} alt="" />
                     </div>
                     <div style={{ textAlign: 'left', paddingLeft: '10px' }}>
                         <h4>{name}</h4>
@@ -23,10 +23,13 @@ const Review = (props) => {
                     </div>
                 </Card.Header>
                 <Card.Body>
-                    <Card.Text style={{ height: '150px' }}>
-                        {comment.slice(0, 200)}
+                    <Card.Text style={{ paddingBottom: '10px' }}>
+                        {comment}
                     </Card.Text>
                 </Card.Body>
+                <Card.Footer >
+                    <small className="text-muted">{pdName}</small>
+                </Card.Footer>
             </Card>
         </Col>
     );

@@ -10,7 +10,7 @@ const Product = (props) => {
     return (
         <Col>
             <Card className="border-0">
-                <Card.Img variant="top" src={img} />
+                <Card.Img style={{ height: '280px', objectFit: 'cover' }} variant="top" src={img} />
                 <Card.Body>
                     <div className='d-flex justify-content-between'>
 

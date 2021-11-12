@@ -96,7 +96,7 @@ const Dashboard = () => {
                                 user?.email ? <ul style={{ listStyle: 'none' }}>
 
                                     <li>
-                                        <Button style={{ ...linkColor, backgroundColor: 'transparent', border: 'none' }} onClick={logOut} className='mx-2 link-hover mb-2'><FontAwesomeIcon icon={faSignOutAlt} /> Logout</Button>
+                                        <Button style={{ ...linkColor, backgroundColor: 'transparent', border: 'none' }} onClick={logOut} className='mx-2 link-hover '><FontAwesomeIcon icon={faSignOutAlt} /> Logout</Button>
                                     </li>
 
                                 </ul> : ''

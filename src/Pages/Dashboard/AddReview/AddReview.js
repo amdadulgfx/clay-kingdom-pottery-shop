@@ -34,15 +34,15 @@ const AddReview = () => {
 
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicName">
-                        <Form.Control type="text" placeholder="Enter Designation"
-
-                            {...register("designation", { required: true })} />
-
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicName">
                         <Form.Control type="text" placeholder="Enter Your Picture Url"
 
                             {...register("img", { required: true })} />
+
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicName">
+                        <Form.Control type="text" placeholder="Product Name that you have bought"
+
+                            {...register("pdName", { required: true })} />
 
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicName">
