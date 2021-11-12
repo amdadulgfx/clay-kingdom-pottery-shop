@@ -42,7 +42,8 @@ const MyOrders = () => {
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Camp Name</th>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
                             <th>Status</th>
                             <th>Options</th>
                         </tr>
@@ -54,6 +55,7 @@ const MyOrders = () => {
                                 <tr key={myOrder._id}>
                                     <td>{myOrders.indexOf(myOrder) + 1}</td>
                                     <td >{myOrder.productName}</td>
+                                    <td >{myOrder.quantity}</td>
                                     <td className='success'>{myOrder.status}</td>
                                     <td>
 
