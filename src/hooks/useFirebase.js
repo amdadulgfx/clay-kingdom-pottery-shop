@@ -64,7 +64,7 @@ const useFirebase = () => {
     //save user
     const saveUser = (email, displayName) => {
         const user = { email, displayName };
-        axios.post('http://localhost:5000/users', user)
+        axios.post('https://radiant-gorge-33858.herokuapp.com/users', user)
             .then(function (response) {
                 console.log(response);
             })
@@ -89,7 +89,7 @@ const useFirebase = () => {
 
     //admin
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://radiant-gorge-33858.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => setAdmin(data.admin))
     }, [user.email])

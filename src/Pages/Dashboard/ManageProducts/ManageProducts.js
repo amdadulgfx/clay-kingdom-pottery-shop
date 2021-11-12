@@ -3,7 +3,7 @@ import { Container, Table, Button } from 'react-bootstrap';
 const ManageProducts = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/allProducts`)
+        fetch(`https://radiant-gorge-33858.herokuapp.com/allProducts`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
@@ -14,7 +14,7 @@ const ManageProducts = () => {
         if (proceed) {
 
 
-            fetch(`http://localhost:5000/allProducts/${id}`, {
+            fetch(`https://radiant-gorge-33858.herokuapp.com/allProducts/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

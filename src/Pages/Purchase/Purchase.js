@@ -18,7 +18,7 @@ const Purchase = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allProducts/${id}`)
+        fetch(`https://radiant-gorge-33858.herokuapp.com/allProducts/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [id]);
@@ -27,7 +27,7 @@ const Purchase = () => {
     const onSubmit = data => {
         data.productName = name;
         data.status = 'pending';
-        axios.post('http://localhost:5000/orders', {
+        axios.post('https://radiant-gorge-33858.herokuapp.com/orders', {
             ...data
         })
             .then(function (response) {

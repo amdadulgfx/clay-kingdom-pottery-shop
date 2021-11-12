@@ -7,7 +7,7 @@ const ManageAllOrders = () => {
     // const { user } = useAuth();
     // const [remainingUsers, setRemainingUsers] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/allOrders`)
+        fetch(`https://radiant-gorge-33858.herokuapp.com/allOrders`)
             .then(res => res.json())
             .then(data => {
                 setMyOrders(data);
@@ -21,7 +21,7 @@ const ManageAllOrders = () => {
         if (proceed) {
 
 
-            fetch(`http://localhost:5000/allOrders/${id}`, {
+            fetch(`https://radiant-gorge-33858.herokuapp.com/allOrders/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -40,7 +40,7 @@ const ManageAllOrders = () => {
 
     const handleShipped = id => {
         const data = { status: 'shipped' }
-        fetch(`http://localhost:5000/allOrders/${id}`, {
+        fetch(`https://radiant-gorge-33858.herokuapp.com/allOrders/${id}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data)

@@ -5,11 +5,11 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../../../hooks/useAuth';
 
 const AddReview = () => {
-    const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const { user } = useAuth();
     const onSubmit = data => {
 
-        axios.post('http://localhost:5000/reviews', {
+        axios.post('https://radiant-gorge-33858.herokuapp.com/reviews', {
             ...data
         })
             .then(function (response) {

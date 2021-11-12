@@ -7,7 +7,7 @@ const MyOrders = () => {
     const { user } = useAuth();
     // const [remainingUsers, setRemainingUsers] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/orders?email=${user.email}`)
+        fetch(`https://radiant-gorge-33858.herokuapp.com/orders?email=${user.email}`)
             .then(res => res.json())
             .then(data => setMyOrders(data))
     }, [user])
@@ -18,7 +18,7 @@ const MyOrders = () => {
         if (proceed) {
 
 
-            fetch(`http://localhost:5000/allOrders/${id}`, {
+            fetch(`https://radiant-gorge-33858.herokuapp.com/allOrders/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
