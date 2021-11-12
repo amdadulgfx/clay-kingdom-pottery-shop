@@ -23,10 +23,10 @@ const Dashboard = () => {
     let { path, url } = useRouteMatch();
     const { user, logOut, admin } = useAuth();
     return (
-        <div style={{ width: '100%', backgroundColor: '#f4b0a4', overflow: 'hidden' }}>
-            <div style={{ backgroundColor: '#FFF1EE', marginBottom: '0px' }}>
-                <Row md={2}>
-                    <Col md={3}>
+        <div style={{ width: '100%', backgroundColor: '#efe3e3', overflow: 'hidden' }}>
+            <div style={{ backgroundColor: '#f4b0a4', marginBottom: '0px' }}>
+                <Row md={2} >
+                    <Col md={3} className='border-end'>
                         <div className="d-flex p-2 align-items-center">
                             <img style={{ height: 50, marginRight: '10px', }} src="https://i.ibb.co/FxjMhdv/clay-Kingdom.png" alt="clay kingdom logo" />
                             <h5 style={{ ...linkColor, marginTop: '5px', }}><b>Clay Kingdom</b></h5>
@@ -39,8 +39,8 @@ const Dashboard = () => {
                 </Row>
             </div>
             <Row md={2}>
-                <Col md={3}>
-                    <div style={sideBar} className='d-flex flex-column justify-content-between  h-100 pt-3 pb-5'>
+                <Col md={3} style={sideBar} className='border-end'>
+                    <div className='d-flex flex-column justify-content-between  h-100 pt-3 pb-5'>
                         <div >
                             <p className='text-center'><b>{user.displayName} <br /> {user.email}</b></p>
 

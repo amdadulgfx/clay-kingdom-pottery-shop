@@ -23,7 +23,7 @@ const MakeAdmin = () => {
     };
     return (
         <div>
-            <h2>Make An Admin</h2>
+            <h4 className='pt-2'>Make An Admin</h4>
             <Container>
                 <Form className="shadow p-5  bg-body rounded " onSubmit={handleSubmit(onSubmit)}>
 

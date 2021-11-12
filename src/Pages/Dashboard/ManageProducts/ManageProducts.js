@@ -32,8 +32,8 @@ const ManageProducts = () => {
     }
     return (
         <div>
-            <Container className='py-5' data-aos="zoom-in">
-                <h3 className='text-center pb-5'>My Orders</h3>
+            <Container fluid className='pb-5 pt-2' data-aos="zoom-in">
+                <h4 className='text-center'>Manage Products</h4>
                 <Table >
                     <thead>
                         <tr>

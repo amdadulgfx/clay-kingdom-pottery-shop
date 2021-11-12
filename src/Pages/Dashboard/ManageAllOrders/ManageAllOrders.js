@@ -52,9 +52,9 @@ const ManageAllOrders = () => {
     }
     return (
         <div>
-            <Container className='py-5' data-aos="zoom-in">
-                <h4 className='text-center pb-5'>All Orders</h4>
-                <Table responsive="sm" bordered>
+            <Container className='pb-5 pt-2' data-aos="zoom-in">
+                <h4 className='text-center'>Manage All Orders</h4>
+                <Table responsive="sm" >
                     <thead>
                         <tr>
                             <th>#</th>
