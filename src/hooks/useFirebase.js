@@ -10,8 +10,7 @@ const useFirebase = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [admin, setAdmin] = useState(false);
     const [authError, setAuthError] = useState('');
-    const [isAdminLoading, setIsAdminLoading] = useState(false);
-
+    const [isDashLoading, setIsDashLoading] = useState(true)
     const auth = getAuth();
 
     //register 
@@ -51,10 +50,10 @@ const useFirebase = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // // Signed in 
-                // const user = userCredential.user;
+                const user = userCredential.user;
                 // // ...
-
-                const destination = location?.state?.from || "/";
+                setUser(user)
+                const destination = location?.state?.from || '/';
                 history.replace(destination);
 
             })
@@ -94,12 +93,12 @@ const useFirebase = () => {
 
     //admin
     useEffect(() => {
-        setIsAdminLoading(true)
+        setIsDashLoading(true)
         fetch(`https://radiant-gorge-33858.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setAdmin(data.admin)
-                setIsAdminLoading(false)
+                setIsDashLoading(false);
             })
     }, [user.email])
 
@@ -120,8 +119,7 @@ const useFirebase = () => {
         loginUser,
         logOut,
         authError,
-        isAdminLoading
-
+        isDashLoading
 
     }
 }

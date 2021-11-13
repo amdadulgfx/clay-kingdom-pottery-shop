@@ -3,10 +3,10 @@ import { Redirect, Route } from 'react-router';
 import useAuth from '../../../hooks/useAuth';
 
 const AdminRoute = ({ children, ...rest }) => {
-    const { user, isAdminLoading, admin } = useAuth();
-    console.log(admin);
-    if (isAdminLoading) {
-        return <div className="spinner-border text-danger" role="status">
+    const { user, isDashLoading, admin } = useAuth();
+    // console.log(admin);
+    if (isDashLoading) {
+        return <div className="my-5 spinner-border text-danger" role="status">
             <span className="visually-hidden">Loading...</span>
         </div>
     }
@@ -14,12 +14,12 @@ const AdminRoute = ({ children, ...rest }) => {
         <Route
             {...rest}
             render={({ location }) =>
-                user.email || admin ? (
+                user.email && admin ? (
                     children
                 ) : (
                     <Redirect
                         to={{
-                            pathname: `/dashboard`,
+                            pathname: '/dashboard',
                             state: { from: location }
                         }}
                     />

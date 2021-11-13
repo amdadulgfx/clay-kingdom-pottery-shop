@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row, Button } from 'react-bootstrap';
+import { Col, Row, Button, Nav, Navbar, Container, NavDropdown } from 'react-bootstrap';
 import { NavLink as Link, useRouteMatch, Switch, Route } from 'react-router-dom';
 import { active, linkColor } from '../../../Shared/Navigation/Navigation';
 import AddReview from '../AddReview/AddReview';
@@ -38,8 +38,59 @@ const Dashboard = () => {
                     </Col>
                 </Row>
             </div>
+            <Navbar className='d-block d-md-none' style={{ backgroundColor: '#FCD2C9' }} collapseOnSelect expand="lg" >
+                <Container>
+                    <Navbar.Brand href="#home">Clay Kingdom</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Collapse id="responsive-navbar-nav">
+                        <Nav className="me-auto">
+                            <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to="/home"><FontAwesomeIcon icon={faHome} /> Home</Link>
+
+                            {
+                                admin ? <div>
+                                    <li>
+
+                                        <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/makeAdmin`}><FontAwesomeIcon icon={faUserPlus} /> Make Admin</Link>
+                                    </li>
+                                    <li>
+
+                                        <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/addAProduct`}><FontAwesomeIcon icon={faPlusSquare} /> Add A Product</Link>
+                                    </li>
+
+                                    <li>
+
+                                        <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/manageAllOrders`}><FontAwesomeIcon icon={faTasks} /> Manage All Orders</Link>
+                                    </li>
+                                    <li>
+
+                                        <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/manageProducts`}><FontAwesomeIcon icon={faTasks} /> Manage Products</Link>
+                                    </li>
+                                </div> : <div>
+                                    <li>
+                                        <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/myOrder`}><FontAwesomeIcon icon={faSortAmountDownAlt} /> My Orders</Link>
+                                    </li>
+                                    <li>
+
+                                        <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/pay`}><FontAwesomeIcon icon={faMoneyBillAlt} />{" "} Pay</Link>
+                                    </li>
+                                    <li>
+
+                                        <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/addReview`}><FontAwesomeIcon icon={faEdit} /> Add Review</Link>
+                                    </li>
+                                </div>
+                            }
+                        </Nav>
+                        <Nav>
+                            <Nav.Link href="#deets">More deets</Nav.Link>
+                            <Nav.Link eventKey={2} href="#memes">
+                                Dank memes
+                            </Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
             <Row md={2}>
-                <Col md={3} style={sideBar} className='border-end'>
+                <Col md={3} style={sideBar} className='border-end d-none d-md-block'>
                     <div className='d-flex flex-column justify-content-between  h-100 pt-3 pb-5'>
                         <div >
                             <p className='text-center'><b>{user.displayName} <br /> {user.email}</b></p>
@@ -50,24 +101,10 @@ const Dashboard = () => {
                                 <li>
                                     <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to="/home"><FontAwesomeIcon icon={faHome} /> Home</Link>
                                 </li>
-                                {
-                                    !admin && <div>
-                                        <li>
-                                            <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/myOrder`}><FontAwesomeIcon icon={faSortAmountDownAlt} /> My Orders</Link>
-                                        </li>
-                                        <li>
 
-                                            <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/pay`}><FontAwesomeIcon icon={faMoneyBillAlt} />{" "} Pay</Link>
-                                        </li>
-                                        <li>
-
-                                            <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/addReview`}><FontAwesomeIcon icon={faEdit} /> Add Review</Link>
-                                        </li>
-                                    </div>
-                                }
 
                                 {
-                                    admin && <div>
+                                    admin ? <div>
                                         <li>
 
                                             <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/makeAdmin`}><FontAwesomeIcon icon={faUserPlus} /> Make Admin</Link>
@@ -84,6 +121,18 @@ const Dashboard = () => {
                                         <li>
 
                                             <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/manageProducts`}><FontAwesomeIcon icon={faTasks} /> Manage Products</Link>
+                                        </li>
+                                    </div> : <div>
+                                        <li>
+                                            <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/myOrder`}><FontAwesomeIcon icon={faSortAmountDownAlt} /> My Orders</Link>
+                                        </li>
+                                        <li>
+
+                                            <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/pay`}><FontAwesomeIcon icon={faMoneyBillAlt} />{" "} Pay</Link>
+                                        </li>
+                                        <li>
+
+                                            <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/addReview`}><FontAwesomeIcon icon={faEdit} /> Add Review</Link>
                                         </li>
                                     </div>
                                 }
@@ -113,10 +162,7 @@ const Dashboard = () => {
                 <Col md={9}>
                     <Switch>
                         <Route exact path={path}>
-                            {
-                                admin ? <ManageAllOrders></ManageAllOrders> :
-                                    <MyOrders></MyOrders>
-                            }
+                            <h5>Welcome To The Dashboard</h5>
                         </Route>
                         <Route path={`${path}/myOrder`}>
                             <MyOrders></MyOrders>
