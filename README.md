@@ -1,6 +1,6 @@
 # Clay Kingdom A Pottery Shop
 
-This is a pottery selling shop where people can buy products with lots of functionalities. Its a fullstack website which is  built with full-stack website using `React`, `firebase`, `react router`, `node`, `express`, `mongodb` etc. 
+This is a pottery selling shop where people can buy products with lots of functionalities. Its a fullstack website which is  built with  using `React`, `firebase`, `react router`, `node`, `express`, `mongodb` etc. 
  
 Live Site: https://clay-kingdom.web.app/
 
