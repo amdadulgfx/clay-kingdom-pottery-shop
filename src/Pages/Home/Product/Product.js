@@ -31,7 +31,7 @@ const Product = (props) => {
                         </p>
                         <br />
                         <Link to={`/purchase/${_id}`}>
-                            <Button className='clay-button'>Purchase Now</Button>
+                            <Button className='border-0 clay-button'>Purchase Now</Button>
                         </Link>
                     </div>
                 </Card.Body>
