@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Table, Button } from 'react-bootstrap';
+import {
+
+    useLocation
+} from "react-router-dom";
 const ManageProducts = () => {
     const [products, setProducts] = useState([]);
+    // const location = useLocation();
+    // console.log(location);
     useEffect(() => {
         fetch(`https://radiant-gorge-33858.herokuapp.com/allProducts`)
             .then(res => res.json())
@@ -34,7 +40,7 @@ const ManageProducts = () => {
         <div>
             <Container fluid className='pb-5 pt-2' data-aos="zoom-in">
                 <h4 className='text-center'>Manage Products</h4>
-                <Table >
+                <Table responsive="sm" >
                     <thead>
                         <tr>
                             <th>#</th>

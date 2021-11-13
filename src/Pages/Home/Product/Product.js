@@ -16,7 +16,7 @@ const Product = (props) => {
 
                         <Card.Title>{name}</Card.Title> <p> <i>${price}</i> </p>
                     </div>
-                    <Card.Text style={{ textAlign: 'left' }} >
+                    <div style={{ textAlign: 'left' }} >
                         <span >
                             <Rating
                                 initialRating={rating}
@@ -33,7 +33,7 @@ const Product = (props) => {
                         <Link to={`/purchase/${_id}`}>
                             <Button className='clay-button'>Purchase Now</Button>
                         </Link>
-                    </Card.Text>
+                    </div>
                 </Card.Body>
             </Card>
         </Col>

@@ -2,18 +2,20 @@ import authInitilizer from "../Pages/Login/Firebase/firebase.init";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from "firebase/auth";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { displayName } from "react-typical";
 
 authInitilizer();
 
 const useFirebase = () => {
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
-    const [admin, setAdmin] = useState(false)
+    const [admin, setAdmin] = useState(false);
+    const [authError, setAuthError] = useState('');
+    const [isAdminLoading, setIsAdminLoading] = useState(false);
+
     const auth = getAuth();
 
     //register 
-    const registerUser = (email, password, name) => {
+    const registerUser = (email, password, name, history) => {
         setIsLoading(true)
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -32,11 +34,13 @@ const useFirebase = () => {
                     // An error occurred
                     // ...
                 });
+                setAuthError('');
+                history.replace('/');
             })
             .catch((error) => {
-                const errorCode = error.code;
+
                 const errorMessage = error.message;
-                // ..
+                setAuthError(errorMessage);
             })
             .finally(() => setIsLoading(false));
     };
@@ -44,19 +48,19 @@ const useFirebase = () => {
     //login
     const loginUser = (email, password, location, history) => {
         setIsLoading(true);
-        signInWithEmailAndPassword(auth, email, password, location, history)
+        signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                // ...
+                // // Signed in 
+                // const user = userCredential.user;
+                // // ...
 
                 const destination = location?.state?.from || "/";
                 history.replace(destination);
 
             })
             .catch((error) => {
-                const errorCode = error.code;
                 const errorMessage = error.message;
+                setAuthError(errorMessage)
             })
             .finally(() => setIsLoading(false));
     }
@@ -66,10 +70,10 @@ const useFirebase = () => {
         const user = { email, displayName };
         axios.post('https://radiant-gorge-33858.herokuapp.com/users', user)
             .then(function (response) {
-                console.log(response);
+                // console.log(response);
             })
             .catch(function (error) {
-                console.log(error);
+                // console.log(error);
             });
 
     }
@@ -77,6 +81,7 @@ const useFirebase = () => {
     //observer 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
+            // setIsLoading(true)
             if (user) {
                 setUser(user);
             } else {
@@ -89,9 +94,13 @@ const useFirebase = () => {
 
     //admin
     useEffect(() => {
+        setIsAdminLoading(true)
         fetch(`https://radiant-gorge-33858.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
-            .then(data => setAdmin(data.admin))
+            .then(data => {
+                setAdmin(data.admin)
+                setIsAdminLoading(false)
+            })
     }, [user.email])
 
     //logout 
@@ -110,6 +119,8 @@ const useFirebase = () => {
         registerUser,
         loginUser,
         logOut,
+        authError,
+        isAdminLoading
 
 
     }

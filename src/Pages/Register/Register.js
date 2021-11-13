@@ -10,8 +10,8 @@ const Register = () => {
     const history = useHistory();
 
     const onSubmit = data => {
-        registerUser(data.email, data.password, data.displayName);
-        history.replace('/');
+        registerUser(data.email, data.password, data.displayName, history);
+
     };
 
 
