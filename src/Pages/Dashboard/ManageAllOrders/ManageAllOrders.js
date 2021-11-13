@@ -51,7 +51,7 @@ const ManageAllOrders = () => {
             })
     }
     return (
-        <div style={{ height: '90vh', }}>
+        <div >
             <Container className='pb-5 pt-2' data-aos="zoom-in">
                 <h4 className='text-center'>Manage All Orders</h4>
                 <Table responsive="sm" >

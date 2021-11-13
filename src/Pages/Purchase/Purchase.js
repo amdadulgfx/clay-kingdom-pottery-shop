@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Form, Row, Button } from 'react-bootstrap';
+import { Col, Container, Form, Row, Button, Alert } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import Rating from 'react-rating';
 import { useParams } from 'react-router';
@@ -11,7 +11,7 @@ import Navigation from '../../Shared/Navigation/Navigation';
 const Purchase = () => {
     const [product, setProduct] = useState({});
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
-
+    const [success, setSuccess] = useState(false);
     const { id } = useParams();
     const { user } = useAuth();
 
@@ -36,6 +36,7 @@ const Purchase = () => {
             .catch(function (error) {
                 console.log(error);
             });
+        setSuccess(true)
         reset();
     };
     return (
@@ -113,10 +114,13 @@ const Purchase = () => {
                                         />
                                     </Form.Group>
 
-                                    <Button variant="primary" type="submit">
-                                        Purchase Order
+                                    <Button className='border-0 mb-3 clay-button' type="submit">
+                                        Place Order
                                     </Button>
                                 </Form>
+                                {success && <Alert variant="success">
+                                    Order placed Succesfully!
+                                </Alert>}
                             </div>
                         </Col>
                     </Row>

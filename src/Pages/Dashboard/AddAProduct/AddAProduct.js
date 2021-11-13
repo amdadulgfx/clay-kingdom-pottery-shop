@@ -79,8 +79,8 @@ const AddAProduct = () => {
 
 
 
-                    <Button variant="primary" type="submit">
-                        Submit
+                    <Button className='border-0 mb-3 clay-button' type="submit">
+                        Add Product
                     </Button>
                 </Form>
                 {success && <Alert variant="success">

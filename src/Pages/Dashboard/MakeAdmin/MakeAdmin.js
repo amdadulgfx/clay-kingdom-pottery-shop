@@ -35,7 +35,7 @@ const MakeAdmin = () => {
                         />
                     </Form.Group>
 
-                    <Button variant="primary" type="submit">
+                    <Button className='border-0 mb-3 clay-button' type="submit">
                         Make Admin
                     </Button>
                 </Form>
