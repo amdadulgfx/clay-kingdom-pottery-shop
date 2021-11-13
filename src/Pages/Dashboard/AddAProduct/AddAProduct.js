@@ -1,9 +1,11 @@
 import axios from 'axios';
-import React from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Container, Form, Button, Alert } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
 const AddAProduct = () => {
+    const [success, setSuccess] = useState(false);
+
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const onSubmit = data => {
         console.log(data);
@@ -18,7 +20,7 @@ const AddAProduct = () => {
     };
     return (
         <div>
-            <h2>this is add product</h2>
+            <h5>Add Product</h5>
             <Container>
                 <Form className="shadow-sm p-5 mb-5 bg-body rounded"
                     onSubmit={handleSubmit(onSubmit)}>
@@ -80,6 +82,9 @@ const AddAProduct = () => {
                         Submit
                     </Button>
                 </Form>
+                {success && <Alert variant="success">
+                    Product Added Succesfully!
+                </Alert>}
             </Container>
         </div>
     );

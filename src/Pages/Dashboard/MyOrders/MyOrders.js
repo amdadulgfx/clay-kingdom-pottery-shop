@@ -38,7 +38,7 @@ const MyOrders = () => {
         <div>
             <Container className='py-5' data-aos="zoom-in">
                 <h3 className='text-center pb-5'>My Orders</h3>
-                <Table >
+                <Table responsive='sm'>
                     <thead>
                         <tr>
                             <th>#</th>

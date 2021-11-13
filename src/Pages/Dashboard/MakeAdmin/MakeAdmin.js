@@ -16,15 +16,15 @@ const MakeAdmin = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount) {
-                    reset()
                     setSuccess(true)
+                    reset()
                 }
             })
     };
     return (
         <div>
             <h4 className='pt-2'>Make An Admin</h4>
-            <Container>
+            <Container className="mb-5">
                 <Form className="shadow p-5  bg-body rounded " onSubmit={handleSubmit(onSubmit)}>
 
 

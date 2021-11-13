@@ -22,7 +22,7 @@ const AddReview = () => {
     };
     return (
         <div>
-            <h2>give a feedback</h2>
+            <h3>Give Use Feedback</h3>
             <Container>
                 <Form className="shadow-sm p-5 mb-5 bg-body rounded"
                     onSubmit={handleSubmit(onSubmit)}>

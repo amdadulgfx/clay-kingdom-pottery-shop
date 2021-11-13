@@ -8,9 +8,11 @@ const Review = (props) => {
         <Col>
             <Card border="light" >
                 <Card.Header className='d-flex align-items-center'>
-                    <div>
 
-                        <img style={{ height: '72', width: '72', borderRadius: '5px' }} src={img} alt="" />
+
+                    <div >
+
+                        <img style={{ height: '72px', width: '72px', borderRadius: '15px' }} src={img} className='img-fluid' alt="" />
                     </div>
                     <div style={{ textAlign: 'left', paddingLeft: '10px' }}>
                         <h4>{name}</h4>
@@ -21,6 +23,7 @@ const Review = (props) => {
                             fullSymbol="fas fa-star rating-color"
                         />
                     </div>
+
                 </Card.Header>
                 <Card.Body>
                     <Card.Text style={{ paddingBottom: '10px' }}>

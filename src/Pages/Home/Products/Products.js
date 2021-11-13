@@ -11,7 +11,7 @@ const Products = () => {
     }, [])
     return (
         <div className="py-5" style={{ backgroundColor: '#FCF8F7', paddingTop: '30px' }}>
-            <h1 className='my-5'>Our Featured Products</h1>
+            <h1 className='my-5'>Our <span style={{ color: '#663333' }}>Featured</span> Products</h1>
             <Container>
                 <Row xs={1} md={3} className="g-4">
                     {

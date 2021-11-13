@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row, Button, Nav, Navbar, Container, NavDropdown } from 'react-bootstrap';
+import { Col, Row, Button, Nav, Navbar, Container, } from 'react-bootstrap';
 import { NavLink as Link, useRouteMatch, Switch, Route } from 'react-router-dom';
 import { active, linkColor } from '../../../Shared/Navigation/Navigation';
 import AddReview from '../AddReview/AddReview';
@@ -24,7 +24,7 @@ const Dashboard = () => {
     const { user, logOut, admin } = useAuth();
     return (
         <div style={{ width: '100%', backgroundColor: '#efe3e3', overflow: 'hidden' }}>
-            <div style={{ backgroundColor: '#f4b0a4', marginBottom: '0px' }}>
+            <div className="d-none d-md-block" style={{ backgroundColor: '#f4b0a4', marginBottom: '0px' }}>
                 <Row md={2} >
                     <Col md={3} className='border-end'>
                         <div className="d-flex p-2 align-items-center">
@@ -40,21 +40,24 @@ const Dashboard = () => {
             </div>
             <Navbar className='d-block d-md-none' style={{ backgroundColor: '#FCD2C9' }} collapseOnSelect expand="lg" >
                 <Container>
-                    <Navbar.Brand href="#home">Clay Kingdom</Navbar.Brand>
+                    <Navbar.Brand href="#home">Clay Kingdom | Dashboard</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
-                            <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to="/home"><FontAwesomeIcon icon={faHome} /> Home</Link>
+                            <div style={{ textAlign: 'left' }}>
+
+                                <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to="/home"><FontAwesomeIcon icon={faHome} /> Home</Link>
+                            </div>
 
                             {
-                                admin ? <div>
+                                admin ? <div style={{ textAlign: 'left' }} >
                                     <li>
 
                                         <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/makeAdmin`}><FontAwesomeIcon icon={faUserPlus} /> Make Admin</Link>
                                     </li>
                                     <li>
 
-                                        <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/addAProduct`}><FontAwesomeIcon icon={faPlusSquare} /> Add A Product</Link>
+                                        <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/addAProduct`}><FontAwesomeIcon icon={faPlusSquare} /><span className='p-1'></span>Add A Product</Link>
                                     </li>
 
                                     <li>
@@ -65,26 +68,25 @@ const Dashboard = () => {
 
                                         <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/manageProducts`}><FontAwesomeIcon icon={faTasks} /> Manage Products</Link>
                                     </li>
-                                </div> : <div>
-                                    <li>
-                                        <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/myOrder`}><FontAwesomeIcon icon={faSortAmountDownAlt} /> My Orders</Link>
-                                    </li>
-                                    <li>
-
-                                        <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/pay`}><FontAwesomeIcon icon={faMoneyBillAlt} />{" "} Pay</Link>
-                                    </li>
-                                    <li>
-
-                                        <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/addReview`}><FontAwesomeIcon icon={faEdit} /> Add Review</Link>
-                                    </li>
                                 </div>
+                                    :
+                                    <div style={{ textAlign: 'left' }}>
+                                        <li>
+                                            <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/myOrder`}><FontAwesomeIcon icon={faSortAmountDownAlt} /> My Orders</Link>
+                                        </li>
+                                        <li>
+
+                                            <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/pay`}><FontAwesomeIcon icon={faMoneyBillAlt} />{" "} Pay</Link>
+                                        </li>
+                                        <li>
+
+                                            <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/addReview`}><FontAwesomeIcon icon={faEdit} /> Add Review</Link>
+                                        </li>
+                                    </div>
                             }
                         </Nav>
                         <Nav>
-                            <Nav.Link href="#deets">More deets</Nav.Link>
-                            <Nav.Link eventKey={2} href="#memes">
-                                Dank memes
-                            </Nav.Link>
+                            <Button style={{ ...linkColor, backgroundColor: 'transparent', border: 'none' }} onClick={logOut} className='mx-2 link-hover '><FontAwesomeIcon icon={faSignOutAlt} /> Logout</Button>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
@@ -111,7 +113,7 @@ const Dashboard = () => {
                                         </li>
                                         <li>
 
-                                            <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/addAProduct`}><FontAwesomeIcon icon={faPlusSquare} /> Add A Product</Link>
+                                            <Link activeStyle={active} style={linkColor} className='mx-3 link-hover' to={`${url}/addAProduct`}><FontAwesomeIcon icon={faPlusSquare} /><span className='p-1'></span>Add A Product</Link>
                                         </li>
 
                                         <li>
