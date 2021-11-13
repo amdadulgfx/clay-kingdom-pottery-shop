@@ -16,10 +16,11 @@ const AddAProduct = () => {
             .catch(function (error) {
                 console.log(error);
             });
+        setSuccess(true)
         reset();
     };
     return (
-        <div>
+        <div  >
             <h5>Add Product</h5>
             <Container>
                 <Form className="shadow-sm p-5 mb-5 bg-body rounded"

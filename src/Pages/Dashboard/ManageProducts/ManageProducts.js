@@ -37,7 +37,7 @@ const ManageProducts = () => {
         }
     }
     return (
-        <div>
+        <div >
             <Container fluid className='pb-5 pt-2' data-aos="zoom-in">
                 <h4 className='text-center'>Manage Products</h4>
                 <Table responsive="sm" >

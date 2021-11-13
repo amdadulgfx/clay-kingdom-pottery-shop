@@ -24,7 +24,7 @@ const Dashboard = () => {
     const { user, logOut, admin } = useAuth();
     return (
         <div style={{ width: '100%', backgroundColor: '#efe3e3', overflow: 'hidden' }}>
-            <div className="d-none d-md-block" style={{ backgroundColor: '#f4b0a4', marginBottom: '0px' }}>
+            <div className="d-none d-md-block" style={{ backgroundColor: '#FFF0E9', marginBottom: '0px' }}>
                 <Row md={2} >
                     <Col md={3} className='border-end'>
                         <div className="d-flex p-2 align-items-center">
@@ -164,7 +164,7 @@ const Dashboard = () => {
                 <Col md={9}>
                     <Switch>
                         <Route exact path={path}>
-                            <h5>Welcome To The Dashboard</h5>
+                            <h5 style={{ height: '90vh', paddingTop: '200px' }}>Welcome To The Dashboard</h5>
                         </Route>
                         <Route path={`${path}/myOrder`}>
                             <MyOrders></MyOrders>

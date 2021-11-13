@@ -1,10 +1,11 @@
 import axios from 'axios';
-import React from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Container, Form, Button, Alert } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../../hooks/useAuth';
 
 const AddReview = () => {
+    const [success, setSuccess] = useState(false);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const { user } = useAuth();
     const onSubmit = data => {
@@ -18,11 +19,12 @@ const AddReview = () => {
             .catch(function (error) {
                 console.log(error);
             });
+        setSuccess(true)
         reset();
     };
     return (
         <div>
-            <h3>Give Use Feedback</h3>
+            <h3>Give Us Feedback</h3>
             <Container>
                 <Form className="shadow-sm p-5 mb-5 bg-body rounded"
                     onSubmit={handleSubmit(onSubmit)}>
@@ -66,6 +68,9 @@ const AddReview = () => {
                         Submit
                     </Button>
                 </Form>
+                {success && <Alert variant="success">
+                    Made Admin Succesfully!
+                </Alert>}
             </Container>
         </div>
     );
