@@ -9,7 +9,7 @@ const AddAProduct = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const onSubmit = data => {
         console.log(data);
-        axios.post('https://radiant-gorge-33858.herokuapp.com/addProduct', data)
+        axios.post('https://claykingdom.onrender.com/addProduct', data)
             .then(function (response) {
                 console.log(response);
             })

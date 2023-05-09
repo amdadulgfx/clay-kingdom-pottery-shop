@@ -18,7 +18,7 @@ const Purchase = () => {
 
 
     useEffect(() => {
-        fetch(`https://radiant-gorge-33858.herokuapp.com/allProducts/${id}`)
+        fetch(`https://claykingdom.onrender.com/allProducts/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [id]);
@@ -27,7 +27,7 @@ const Purchase = () => {
     const onSubmit = data => {
         data.productName = name;
         data.status = 'pending';
-        axios.post('https://radiant-gorge-33858.herokuapp.com/orders', {
+        axios.post('https://claykingdom.onrender.com/orders', {
             ...data
         })
             .then(function (response) {

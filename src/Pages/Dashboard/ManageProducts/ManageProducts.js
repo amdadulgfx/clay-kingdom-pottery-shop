@@ -9,7 +9,7 @@ const ManageProducts = () => {
     // const location = useLocation();
     // console.log(location);
     useEffect(() => {
-        fetch(`https://radiant-gorge-33858.herokuapp.com/allProducts`)
+        fetch(`https://claykingdom.onrender.com/allProducts`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
@@ -20,7 +20,7 @@ const ManageProducts = () => {
         if (proceed) {
 
 
-            fetch(`https://radiant-gorge-33858.herokuapp.com/allProducts/${id}`, {
+            fetch(`https://claykingdom.onrender.com/allProducts/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

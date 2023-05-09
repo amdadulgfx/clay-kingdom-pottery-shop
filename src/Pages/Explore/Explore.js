@@ -7,7 +7,7 @@ import Product from '../Home/Product/Product';
 const Explore = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('https://radiant-gorge-33858.herokuapp.com/allProducts/')
+        fetch('https://claykingdom.onrender.com/allProducts/')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])

@@ -10,7 +10,7 @@ const AddReview = () => {
     const { user } = useAuth();
     const onSubmit = data => {
 
-        axios.post('https://radiant-gorge-33858.herokuapp.com/reviews', {
+        axios.post('https://claykingdom.onrender.com/reviews', {
             ...data
         })
             .then(function (response) {

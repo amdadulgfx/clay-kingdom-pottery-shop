@@ -67,7 +67,7 @@ const useFirebase = () => {
     //save user
     const saveUser = (email, displayName) => {
         const user = { email, displayName };
-        axios.post('https://radiant-gorge-33858.herokuapp.com/users', user)
+        axios.post('https://claykingdom.onrender.com/users', user)
             .then(function (response) {
                 // console.log(response);
             })
@@ -94,7 +94,7 @@ const useFirebase = () => {
     //admin
     useEffect(() => {
         setIsDashLoading(true)
-        fetch(`https://radiant-gorge-33858.herokuapp.com/users/${user.email}`)
+        fetch(`https://claykingdom.onrender.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setAdmin(data.admin)

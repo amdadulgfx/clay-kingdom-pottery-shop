@@ -7,7 +7,7 @@ const ManageAllOrders = () => {
     // const { user } = useAuth();
     // const [remainingUsers, setRemainingUsers] = useState([])
     useEffect(() => {
-        fetch(`https://radiant-gorge-33858.herokuapp.com/allOrders`)
+        fetch(`https://claykingdom.onrender.com/allOrders`)
             .then(res => res.json())
             .then(data => {
                 setMyOrders(data);
@@ -21,7 +21,7 @@ const ManageAllOrders = () => {
         if (proceed) {
 
 
-            fetch(`https://radiant-gorge-33858.herokuapp.com/allOrders/${id}`, {
+            fetch(`https://claykingdom.onrender.com/allOrders/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -40,7 +40,7 @@ const ManageAllOrders = () => {
 
     const handleShipped = id => {
         const data = { status: 'shipped' }
-        fetch(`https://radiant-gorge-33858.herokuapp.com/allOrders/${id}`, {
+        fetch(`https://claykingdom.onrender.com/allOrders/${id}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data)

@@ -6,7 +6,7 @@ const MakeAdmin = () => {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
-        fetch('https://radiant-gorge-33858.herokuapp.com/users/admin', {
+        fetch('https://claykingdom.onrender.com/users/admin', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
